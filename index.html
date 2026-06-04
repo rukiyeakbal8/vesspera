@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VESPERA | Lüks Takı ve Saat</title>
+    
+    <!-- Lüks ve şık görünüm için Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Genel Karanlık ve Estetik Ayarlar */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: #050505; 
+            color: #e0e0e0; 
+            font-family: 'Montserrat', sans-serif; 
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, .serif-font { font-family: 'Playfair Display', serif; font-weight: normal; }
+        a { text-decoration: none; transition: 0.3s ease; }
+
+        /* Üst Menü / Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: #000000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .logo {
+            font-size: 28px;
+            letter-spacing: 4px;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+        nav ul { list-style: none; display: flex; gap: 30px; }
+        nav ul li a {
+            color: #888888;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        nav ul li a:hover, nav ul li a.active { color: #ffffff; }
+
+        /* Buton Stili */
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background-color: #0d1b2a; 
+            color: #ffffff;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid #1b2a47;
+            cursor: pointer;
+        }
+        .btn:hover { background-color: #ffffff; color: #000000; }
+
+        /* Ana Görsel Alanı (Hero) */
+        .hero {
+            position: relative;
+            height: 80vh;
+            background: url('https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            padding-left: 10%;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 500px;
+        }
+        .hero-content p {
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: #aaaaaa;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .hero-content h1 {
+            font-size: 55px;
+            color: #ffffff;
+            line-height: 1.1;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+        .hero-content h3 {
+            font-size: 16px;
+            color: #cccccc;
+            margin-bottom: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+        }
+
+        /* 4'lü Vitrin (Promo Grid) */
+        .promo-grid {
+            display: flex;
+            height: 400px;
+        }
+        .promo-box {
+            flex: 1;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px;
+            text-align: center;
+            overflow: hidden;
+            border-right: 1px solid #111;
+        }
+        .promo-box::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.1));
+            transition: background 0.4s ease;
+        }
+        .promo-box:hover::before { background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.4)); }
+        .promo-content { position: relative; z-index: 1; }
+        .promo-content p { font-size: 10px; color: #aaaaaa; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+        .promo-content h3 { font-size: 26px; color: #ffffff; letter-spacing: 1px; }
+        
+        .promo-red {
+            background-color: #5c0f13; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .promo-red::before { display: none; }
+        .promo-red h3 { font-size: 30px; margin: 15px 0; }
+        .promo-red .btn-outline {
+            border: 1px solid #ffffff;
+            color: #ffffff;
+            padding: 10px 25px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            margin-top: 15px;
+            text-transform: uppercase;
+        }
+
+        /* İndirim Sayacı (Sale Banner) */
+        .sale-banner {
+            padding: 50px 10%;
+            background-color: #0a0a0a;
+            border-bottom: 1px solid #1a1a1a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .sale-text h2 { font-size: 32px; display: inline-block; margin-right: 20px; }
+        .sale-text span { color: #888; font-size: 14px; font-family: 'Montserrat', sans-serif; }
+        .timer { display: flex; gap: 30px; text-align: center; }
+        .timer div h4 { font-size: 40px; color: #ffffff; margin-bottom: 5px; }
+        .timer div p { font-size: 10px; color: #666666; letter-spacing: 2px; text-transform: uppercase; }
+
+        /* Yeni Gelenler (New Arrivals) */
+        .new-arrivals { padding: 80px 10%; text-align: center; background-color: #050505; }
+        .section-title { font-size: 36px; margin-bottom: 10px; color: #ffffff; }
+        .section-subtitle { font-size: 13px; color: #888888; margin-bottom: 50px; font-family: 'Montserrat', sans-serif; }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        .product-card {
+            background-color: #0c0c0c; 
+            padding: 30px 20px;
+            border: 1px solid #1a1a1a;
+            text-align: left;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .product-card:hover { transform: translateY(-10px); border-color: #333; }
+        .product-badge { font-size: 10px; color: #888; border: 1px solid #333; padding: 3px 8px; border-radius: 10px; display: inline-block; margin-bottom: 15px; }
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            filter: brightness(0.8) contrast(1.2) drop-shadow(0px 10px 15px rgba(0,0,0,0.8));
+            margin-bottom: 20px;
+        }
+        .product-card h4 { font-size: 20px; color: #ffffff; margin-bottom: 5px; }
+        .product-card .price { font-size: 14px; color: #aaaaaa; font-family: 'Montserrat', sans-serif; font-weight: 500; }
+        .price span { text-decoration: line-through; color: #555; margin-right: 10px; }
+
+        /* Alt Model Görseli ve Kategoriler */
+        .bottom-banner {
+            position: relative;
+            height: 60vh;
+            background: url('https://images.unsplash.com/photo-1599643477877-530eb83abc8e?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 60px;
+        }
+        .bottom-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.2));
+        }
+        .category-links { position: relative; z-index: 1; display: flex; gap: 40px; flex-wrap: wrap; justify-content: center; }
+        .category-links a {
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0px 4px 10px rgba(0,0,0,0.8);
+        }
+        .category-links a:hover { color: #aaaaaa; }
+    </style>
+</head>
+<body>
+
+    <!-- Üst Menü (Diğer Sayfalarla Uyumlu Hale Getirildi) -->
+    <header>
+        <nav style="flex: 1;">
+            <ul>
+                <li><a href="index.html" class="active">Ana Sayfa</a></li>
+                <li><a href="shop.html">Koleksiyon</a></li>
+                <li><a href="celebrities.html">Yıldızların Seçimi</a></li>
+                <li><a href="reviews.html">Yorumlar</a></li>
+            </ul>
+        </nav>
+        <a href="index.html" class="logo">VESPERA</a>
+        <div style="flex: 1; display: flex; justify-content: flex-end; gap: 20px; color: #fff; font-size: 11px; letter-spacing: 1px;">
+            <a href="favorites.html" style="color:#fff;">FAVORİLER</a> | <a href="cart.html" style="color:#fff;">SEPET (0)</a>
+        </div>
+    </header>
+
+    <!-- Ana Görsel (Hero) -->
+    <section class="hero">
+        <div class="hero-content">
+            <p>%30'A VARAN İNDİRİM</p>
+            <h1>MÜCEVHERLERİN<br>IŞILTISI</h1>
+            <h3>Değerli Mücevher Koleksiyonlarımız</h3>
+            <a href="shop.html" class="btn">ŞİMDİ SİPARİŞ VER</a>
+        </div>
+    </section>
+
+    <!-- 4'lü Kategori ve İndirim Vitrini -->
+    <section class="promo-grid">
+        <div class="promo-box" style="background-image: url('https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=600&auto=format&fit=crop');">
+            <div class="promo-content">
+                <p>En Çok Satan Ürünler</p>
+                <h3>Modern Mücevher</h3>
+            </div>
+        </div>
+        <div class="promo-box promo-red">
+            <img src="data:image/svg+xml;utf8,<svg fill='%23fff' viewBox='0 0 24 24' width='40' height='40' xmlns='http://www.w3.org/2000/svg'><path d='M12 2L15 8H21L16 12.5L18 19L12 15L6 19L8 12.5L3 8H9L12 2Z'/></svg>" alt="Yıldız İkonu" style="margin-bottom: 10px;">
+            <p style="color: #ffb3b3; letter-spacing: 2px; font-size: 10px;">SEZON İNDİRİMLERİ</p>
+            <h3 class="serif-font">Altın ve Pırlantalarda<br>İndirim</h3>
+            <a href="shop.html" class="btn-outline">SİPARİŞ VER</a>
+        </div>
+        <div class="promo-box" style="background-image: url('incibileklik.jpg');">
+            <div class="promo-content">
+                <p>En Çok Satan Ürünler</p>
+                <h3>İnci Bileklikler</h3>
+            </div>
+        </div>
+        <div class="promo-box" style="background-image: url('yuzukkolye.jpg');">
+            <div class="promo-content">
+                <p>En Çok Satan Ürünler</p>
+                <h3>Yüzük Kolyeler</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- İndirim Sayacı -->
+    <section class="sale-banner">
+        <div class="sale-text">
+            <h2 class="serif-font">%45 İNDİRİM</h2>
+            <span>Acele edin! En iyi parçaları tükenmeden yakalayın.</span>
+        </div>
+        <div class="timer">
+            <div><h4>04</h4><p>Gün</p></div>
+            <div><h4>81</h4><p>Saat</p></div>
+            <div><h4>12</h4><p>Dakika</p></div>
+            <div><h4>14</h4><p>Saniye</p></div>
+        </div>
+        <a href="shop.html" class="btn">ŞİMDİ SİPARİŞ VER</a>
+    </section>
+
+    <!-- Yeni Gelenler Ürün Listesi -->
+    <section class="new-arrivals">
+        <h2 class="section-title">Yeni Gelenler</h2>
+        <p class="section-subtitle">VESPERA'nın yeni koleksiyonuyla zarafetin özünü keşfedin.</p>
+        
+        <div class="product-grid">
+            <!-- Ürün 1 -->
+            <div class="product-card">
+                <span class="product-badge">Yeni in</span>
+                <img src="yuzukgoz.jpg" alt="Pırlanta Yüzük" class="product-img">
+                <h4 class="serif-font">Gözyaşı Pırlanta Yüzük</h4>
+                <p class="price"><span>$125.00</span> $90.00</p>
+            </div>
+            <!-- Ürün 2 -->
+            <div class="product-card">
+                <span class="product-badge">Tükendi</span>
+                <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=500&auto=format&fit=crop" alt="Altın Yüzük" class="product-img">
+                <h4 class="serif-font">Klasik Pırlanta Yüzük</h4>
+                <p class="price"><span>$150.00</span> $110.00</p>
+            </div>
+            <!-- Ürün 3 -->
+            <div class="product-card">
+                <span class="product-badge">Yeni in</span>
+                <img src="zumrutyuzuk.jpg" alt="Zümrüt Kesim Yüzük" class="product-img">
+                <h4 class="serif-font">Zümrüt Kesim Yüzük</h4>
+                <p class="price"><span>$200.00</span> $145.00</p>
+            </div>
+            <!-- Ürün 4 -->
+            <div class="product-card">
+                <span class="product-badge">Yeni in</span>
+                <img src="ovalyuzuk.jpg" alt="Oval Kesim Yüzük" class="product-img">
+                <h4 class="serif-font">Oval Zarif Yüzük</h4>
+                <p class="price"><span>$180.00</span> $130.00</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alt Model Görseli ve Kategoriler -->
+    <section class="bottom-banner">
+        <div class="category-links">
+            <a href="shop.html">TÜMÜ</a>
+            <a href="shop.html">KÜPE</a>
+            <a href="shop.html">YÜZÜK</a>
+            <a href="shop.html">BİLEKLİK</a>
+            <a href="shop.html">KOLYE</a>
+            <a href="shop.html">PIRLANTA</a>
+        </div>
+    </section>
+
+</body>
+</html>

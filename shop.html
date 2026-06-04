@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VESPERA | Koleksiyon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Ana Stil Ayarları */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #050505; color: #e0e0e0; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+        h1, h2, h3, h4, .serif-font { font-family: 'Playfair Display', serif; font-weight: normal; }
+        a { text-decoration: none; transition: 0.3s ease; }
+
+        /* Üst Menü */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background-color: #000000; border-bottom: 1px solid rgba(255, 255, 255, 0.05); position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 28px; letter-spacing: 4px; color: #ffffff; font-family: 'Playfair Display', serif; }
+        nav ul { list-style: none; display: flex; gap: 30px; }
+        nav ul li a { color: #888888; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+        nav ul li a:hover, nav ul li a.active { color: #ffffff; }
+
+        /* Sepet ve Animasyon ID'si */
+        #cart-text {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        /* Sayfa Başlığı */
+        .page-header { text-align: center; padding: 80px 20px 40px; background: url('https://images.unsplash.com/photo-1599643478524-fb524fa0a8a7?q=80&w=1920&auto=format&fit=crop') center/cover; position: relative; }
+        .page-header::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.8); }
+        .page-header h1 { position: relative; font-size: 48px; color: #fff; letter-spacing: 4px; z-index: 1; }
+        .page-header p { position: relative; font-size: 12px; color: #aaa; letter-spacing: 2px; z-index: 1; margin-top: 10px; text-transform: uppercase; }
+
+        /* Ürün Izgarası */
+        .shop-container { padding: 60px 10%; }
+        .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .product-card { background-color: #0a0a0a; border: 1px solid #1a1a1a; padding: 20px; transition: 0.3s; position: relative; }
+        .product-card:hover { transform: translateY(-5px); border-color: #444; }
+        
+        .product-img { width: 100%; height: 300px; object-fit: cover; filter: brightness(0.85) contrast(1.1); margin-bottom: 20px; }
+        .product-info { text-align: center; }
+        .product-info h4 { font-size: 22px; color: #fff; margin-bottom: 10px; }
+        .product-info p { font-size: 14px; color: #888; margin-bottom: 20px; }
+        
+        /* Sepete Ekle Butonu */
+        .btn-add { display: inline-block; padding: 10px 25px; border: 1px solid #fff; color: #fff; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; background: transparent; transition: all 0.3s ease; }
+        .btn-add:hover { background: #fff; color: #000; }
+        
+        /* Favori İkonu */
+        .heart-icon { position: absolute; top: 30px; right: 30px; font-size: 24px; color: #555; cursor: pointer; transition: 0.3s; z-index: 2; }
+        .heart-icon:hover, .heart-icon.active { color: #d4af37; }
+
+        /* Şık Bildirim (Toast) Animasyonu CSS'i */
+        .toast-notification {
+            position: fixed;
+            bottom: -60px;
+            right: 30px;
+            background-color: #111;
+            color: #fff;
+            padding: 15px 25px;
+            border: 1px solid #333;
+            border-left: 3px solid #d4af37; /* Zarif altın sarısı detay */
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.9);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1000;
+        }
+        .toast-notification.show {
+            bottom: 30px;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav style="flex: 1;">
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="shop.html" class="active">Koleksiyon</a></li>
+                <li><a href="celebrities.html">Yıldızların Seçimi</a></li>
+                <li><a href="reviews.html">Yorumlar</a></li>
+            </ul>
+        </nav>
+        <a href="index.html" class="logo">VESPERA</a>
+        <div style="flex: 1; display: flex; justify-content: flex-end; gap: 20px; color: #fff; font-size: 11px; letter-spacing: 1px;">
+            <a href="favorites.html" style="color:#fff;">FAVORİLER</a> | 
+            <a href="cart.html" style="color:#fff;" id="cart-text">SEPET (0)</a>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <h1>Karanlığın İçindeki Işıltı</h1>
+        <p>Tüm Koleksiyon</p>
+    </div>
+
+    <section class="shop-container">
+        <div class="product-grid">
+            <!-- Ürün 1 -->
+            <div class="product-card">
+                <div class="heart-icon">♥</div>
+                <img src="Nocturne Yüzük.jpg" class="product-img">
+                <div class="product-info">
+                    <h4>Nocturne Yüzük</h4>
+                    <p>$1,250.00</p>
+                    <button class="btn-add">Sepete Ekle</button>
+                </div>
+            </div>
+            <!-- Ürün 2 -->
+            <div class="product-card">
+                <div class="heart-icon">♥</div>
+                <img src="OBSSİDTEN.jpg" class="product-img">
+                <div class="product-info">
+                    <h4>Obsidyen Zarafeti</h4>
+                    <p>$980.00</p>
+                    <button class="btn-add">Sepete Ekle</button>
+                </div>
+            </div>
+            <!-- Ürün 3 -->
+            <div class="product-card">
+                <div class="heart-icon">♥</div>
+                <img src="Gotik Damla Kolye.jpg" class="product-img">
+                <div class="product-info">
+                    <h4>Gotik Damla Kolye</h4>
+                    <p>$1,450.00</p>
+                    <button class="btn-add">Sepete Ekle</button>
+                </div>
+            </div>
+            <!-- Ürün 4 -->
+            <div class="product-card">
+                <div class="heart-icon">♥</div>
+                <img src="Karanlık Safir Bileklik.jpg" class="product-img">
+                <div class="product-info">
+                    <h4>Karanlık Safir Bileklik</h4>
+                    <p>$850.00</p>
+                    <button class="btn-add">Sepete Ekle</button>
+                </div>
+            </div>
+            <!-- Ürün 5 -->
+            <div class="product-card">
+                <div class="heart-icon">♥</div>
+                <img src="Lüks Saat.jpg" class="product-img">
+                <div class="product-info">
+                    <h4>Vespera Lüks Saat</h4>
+                    <p>$3,200.00</p>
+                    <button class="btn-add">Sepete Ekle</button>
+                </div>
+            </div>
+            <!-- Ürün 6 -->
+            <div class="product-card">
+                <div class="heart-icon">♥</div>
+                <img src="Aethel Elmas Küpe.jpg" class="product-img">
+                <div class="product-info">
+                    <h4>Aethel Elmas Küpe</h4>
+                    <p>$2,100.00</p>
+                    <button class="btn-add">Sepete Ekle</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animasyonlar İçin JavaScript Kodları -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let cartCount = 0;
+            const cartTextElement = document.getElementById("cart-text");
+            const addButtons = document.querySelectorAll(".btn-add");
+            const heartIcons = document.querySelectorAll(".heart-icon");
+
+            // Sepete Ekle Butonu Etkileşimi
+            addButtons.forEach(button => {
+                button.addEventListener("click", function() {
+                    // Ürün ismini al
+                    const productName = this.parentElement.querySelector("h4").innerText;
+                    
+                    // Sepet sayısını artır
+                    cartCount++;
+                    cartTextElement.innerText = `SEPET (${cartCount})`;
+                    
+                    // Sepet yazısında parlama animasyonu
+                    cartTextElement.style.transform = "scale(1.2)";
+                    cartTextElement.style.color = "#d4af37";
+                    setTimeout(() => {
+                        cartTextElement.style.transform = "scale(1)";
+                        cartTextElement.style.color = "#fff";
+                    }, 300);
+
+                    // Bildirim (Toast) Gösterimi
+                    showToast(`${productName} Sepete Eklendi.`);
+
+                    // Butonun rengini ve yazısını geçici olarak değiştir
+                    const originalText = this.innerText;
+                    this.innerText = "EKLENDİ ✓";
+                    this.style.backgroundColor = "#fff";
+                    this.style.color = "#000";
+                    this.style.borderColor = "#fff";
+                    
+                    setTimeout(() => {
+                        this.innerText = originalText;
+                        this.style.backgroundColor = "transparent";
+                        this.style.color = "#fff";
+                    }, 2000);
+                });
+            });
+
+            // Favori (Kalp) İkonu Etkileşimi
+            heartIcons.forEach(icon => {
+                icon.addEventListener("click", function() {
+                    this.classList.toggle("active");
+                });
+            });
+
+            // Şık Bildirim (Toast) Oluşturma Fonksiyonu
+            function showToast(message) {
+                // Eğer ekranda zaten bir bildirim varsa onu kaldır (üst üste binmemesi için)
+                const existingToast = document.querySelector(".toast-notification");
+                if(existingToast) existingToast.remove();
+
+                const toast = document.createElement("div");
+                toast.className = "toast-notification";
+                toast.innerText = message;
+                document.body.appendChild(toast);
+
+                // CSS geçişini tetiklemek için ufak bir gecikme
+                setTimeout(() => {
+                    toast.classList.add("show");
+                }, 10);
+
+                // 3 saniye sonra bildirimi gizle ve sil
+                setTimeout(() => {
+                    toast.classList.remove("show");
+                    setTimeout(() => {
+                        toast.remove();
+                    }, 500);
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

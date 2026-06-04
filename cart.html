@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vespera | Sepetim</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #050505; color: #e0e0e0; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+        h1, h2, h3, h4, .serif-font { font-family: 'Playfair Display', serif; font-weight: normal; }
+        a { text-decoration: none; transition: 0.3s ease; }
+
+        /* Üst Menü */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background-color: #000000; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .logo { font-size: 28px; letter-spacing: 4px; color: #ffffff; font-family: 'Playfair Display', serif; }
+        nav ul { list-style: none; display: flex; gap: 30px; }
+        nav ul li a { color: #888888; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+        nav ul li a:hover, nav ul li a.active { color: #ffffff; }
+
+        .page-title { text-align: center; margin: 60px 0 40px; }
+        .page-title h1 { font-size: 36px; letter-spacing: 4px; color: #fff; }
+
+        /* Sepet Düzeni */
+        .cart-container { max-width: 1200px; margin: 0 auto 100px; padding: 0 20px; display: flex; gap: 50px; align-items: flex-start; }
+        
+        /* Sol Taraf: Ürün Listesi */
+        .cart-items { flex: 2; }
+        .cart-table { width: 100%; border-collapse: collapse; }
+        .cart-table th { text-align: left; padding-bottom: 20px; border-bottom: 1px solid #222; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #666; }
+        .cart-table td { padding: 30px 0; border-bottom: 1px solid #111; vertical-align: middle; }
+        
+        .item-info { display: flex; align-items: center; gap: 20px; }
+        .item-info img { width: 100px; height: 100px; object-fit: cover; filter: brightness(0.8); border: 1px solid #222; }
+        .item-details h4 { font-size: 18px; color: #fff; margin-bottom: 5px; }
+        .item-details p { font-size: 12px; color: #888; }
+        .item-remove { font-size: 10px; color: #5c0f13; margin-top: 10px; display: inline-block; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
+        .item-remove:hover { color: #ff4d4d; }
+
+        .item-qty input { width: 50px; background: #0a0a0a; border: 1px solid #333; color: #fff; padding: 8px; text-align: center; font-family: 'Montserrat', sans-serif; }
+        .item-price { font-size: 16px; color: #fff; text-align: right; }
+
+        /* Sağ Taraf: Ödeme Özeti */
+        .cart-summary { flex: 1; background-color: #0a0a0a; border: 1px solid #1a1a1a; padding: 40px 30px; position: sticky; top: 100px; }
+        .cart-summary h3 { font-size: 24px; color: #fff; margin-bottom: 30px; border-bottom: 1px solid #222; padding-bottom: 15px; }
+        
+        .summary-row { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 13px; color: #aaa; }
+        .summary-total { display: flex; justify-content: space-between; margin-top: 30px; padding-top: 20px; border-top: 1px solid #222; font-size: 20px; color: #fff; font-family: 'Playfair Display', serif; }
+        
+        .btn-checkout { display: block; width: 100%; padding: 18px 0; background-color: #fff; color: #000; text-align: center; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; border: none; cursor: pointer; margin-top: 40px; transition: 0.3s; }
+        .btn-checkout:hover { background-color: #d4af37; color: #fff; }
+        
+        .secure-checkout { text-align: center; margin-top: 15px; font-size: 10px; color: #555; letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav style="flex: 1;">
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="shop.html">Koleksiyon</a></li>
+                <li><a href="celebrities.html">Yıldızların Seçimi</a></li>
+                <li><a href="reviews.html">Yorumlar</a></li>
+            </ul>
+        </nav>
+        <!-- Logoyu Vespera olarak güncelledik -->
+        <a href="index.html" class="logo">VESPERA</a>
+        <div style="flex: 1; display: flex; justify-content: flex-end; gap: 20px; color: #fff; font-size: 11px; letter-spacing: 1px;">
+            <a href="favorites.html" style="color:#fff;">FAVORİLER</a> | <a href="cart.html" style="color:#fff; border-bottom: 1px solid #fff; padding-bottom: 3px;">SEPET (2)</a>
+        </div>
+    </header>
+
+    <div class="page-title">
+        <h1>Alışveriş Çantanız</h1>
+    </div>
+
+    <section class="cart-container">
+        <!-- Sol Kısım: Eklenen Ürünler -->
+        <div class="cart-items">
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Ürün</th>
+                        <th style="text-align: center;">Miktar</th>
+                        <th style="text-align: right;">Toplam</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 1. Ürün -->
+                    <tr>
+                        <td>
+                            <div class="item-info">
+                                <img src="Nocturne Yüzük.jpg" alt="Nocturne Yüzük">
+                                <div class="item-details">
+                                    <h4 class="serif-font">Nocturne Yüzük</h4>
+                                    <p>Ölçü: 14 | Renk: Gümüş</p>
+                                    <span class="item-remove">Kaldır</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="item-qty" style="text-align: center;">
+                            <input type="number" value="1" min="1">
+                        </td>
+                        <td class="item-price">$1,250.00</td>
+                    </tr>
+                    <!-- 2. Ürün -->
+                    <tr>
+                        <td>
+                            <div class="item-info">
+                                <img src="OBSSİDTEN.jpg" alt="Obsidyen Zarafeti">
+                                <div class="item-details">
+                                    <h4 class="serif-font">Obsidyen Zarafeti</h4>
+                                    <p>Zincir: Standart | Renk: Siyah</p>
+                                    <span class="item-remove">Kaldır</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="item-qty" style="text-align: center;">
+                            <input type="number" value="1" min="1">
+                        </td>
+                        <td class="item-price">$980.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Sağ Kısım: Toplam ve Ödeme -->
+        <div class="cart-summary">
+            <h3 class="serif-font">Sipariş Özeti</h3>
+            
+            <div class="summary-row">
+                <span>Ara Toplam</span>
+                <span>$2,230.00</span>
+            </div>
+            <div class="summary-row">
+                <span>Gönderim (Kargo)</span>
+                <span>Ücretsiz</span>
+            </div>
+            <div class="summary-row">
+                <span>Vergiler (KDV)</span>
+                <span>$111.50</span>
+            </div>
+            
+            <div class="summary-total">
+                <span>Genel Toplam</span>
+                <span>$2,341.50</span>
+            </div>
+            
+            <button class="btn-checkout">Siparişi Tamamla</button>
+            <div class="secure-checkout">🔒 256-Bit SSL Güvenli Ödeme</div>
+        </div>
+    </section>
+
+</body>
+</html>

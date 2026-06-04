@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VESPERA | Müşteri Yorumları</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #050505; color: #e0e0e0; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+        h1, h2, h3, h4, .serif-font { font-family: 'Playfair Display', serif; font-weight: normal; }
+        a { text-decoration: none; transition: 0.3s ease; }
+
+        /* Üst Menü */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background-color: #000000; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .logo { font-size: 28px; letter-spacing: 4px; color: #ffffff; font-family: 'Playfair Display', serif; }
+        nav ul { list-style: none; display: flex; gap: 30px; }
+        nav ul li a { color: #888888; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+        nav ul li a:hover, nav ul li a.active { color: #ffffff; }
+
+        .page-title { text-align: center; margin: 80px 0 40px; }
+        .page-title h1 { font-size: 42px; letter-spacing: 5px; color: #fff; margin-bottom: 15px; }
+        .page-title p { font-size: 12px; color: #888; letter-spacing: 3px; text-transform: uppercase; }
+
+        /* Yorum Kartları Izgarası */
+        .reviews-container { max-width: 1200px; margin: 0 auto 100px; padding: 0 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        
+        .review-card {
+            background-color: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            padding: 40px 30px;
+            text-align: center;
+            transition: transform 0.4s ease, border-color 0.4s ease;
+            position: relative;
+        }
+        .review-card:hover {
+            transform: translateY(-10px);
+            border-color: #333;
+        }
+        
+        .stars { color: #d4af37; font-size: 18px; margin-bottom: 20px; letter-spacing: 3px; }
+        .quote-icon { font-family: 'Playfair Display', serif; font-size: 60px; color: #1a1a1a; position: absolute; top: 10px; left: 20px; line-height: 1; }
+        
+        .review-text { font-size: 14px; color: #aaa; line-height: 1.8; margin-bottom: 30px; position: relative; z-index: 1; font-style: italic; }
+        .reviewer-name { font-family: 'Playfair Display', serif; font-size: 18px; color: #fff; letter-spacing: 1px; }
+        .purchased-item { font-size: 10px; color: #666; letter-spacing: 1px; text-transform: uppercase; margin-top: 5px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav style="flex: 1;">
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="shop.html">Koleksiyon</a></li>
+                <li><a href="celebrities.html">Yıldızların Seçimi</a></li>
+                <li><a href="reviews.html" class="active">Yorumlar</a></li>
+            </ul>
+        </nav>
+        <a href="index.html" class="logo">VESPERA</a>
+        <div style="flex: 1; display: flex; justify-content: flex-end; gap: 20px; color: #fff; font-size: 11px; letter-spacing: 1px;">
+            <a href="favorites.html" style="color:#fff;">FAVORİLER</a> | <a href="cart.html" style="color:#fff;">SEPET (0)</a>
+        </div>
+    </header>
+
+    <div class="page-title">
+        <h1>Müşteri Deneyimleri</h1>
+        <p>Zarafeti Yaşayanların Gözünden</p>
+    </div>
+
+    <section class="reviews-container">
+        <div class="review-card">
+            <div class="quote-icon">“</div>
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"Gotik Damla Kolye'nin işçiliği tek kelimeyle kusursuz. Koyu safir taşı loş ışıkta inanılmaz bir derinlik kazanıyor. Beklediğimden çok daha ağır ve kaliteli bir parça."</p>
+            <div class="reviewer-name">- Melis T.</div>
+            <div class="purchased-item">Satın Alınan: Gotik Damla Kolye</div>
+        </div>
+
+        <div class="review-card">
+            <div class="quote-icon">“</div>
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"Nocturne Yüzük, karanlık estetiği mükemmel yansıtıyor. Siparişim özel ahşap bir siyah kutuda, muazzam bir sunumla geldi. Kesinlikle lüksü hissettiriyor."</p>
+            <div class="reviewer-name">- Aylin K.</div>
+            <div class="purchased-item">Satın Alınan: Nocturne Yüzük</div>
+        </div>
+
+        <div class="review-card">
+            <div class="quote-icon">“</div>
+            <div class="stars">★★★★☆</div>
+            <p class="review-text">"Pırlanta işçiliği gerçekten başarılı. Eşime yıldönümü hediyesi olarak aldım ve tasarımı çok farklı buldu. Standart takılardan sıkılanlar için kesinlikle doğru adres."</p>
+            <div class="reviewer-name">- Caner E.</div>
+            <div class="purchased-item">Satın Alınan: Aethel Elmas Küpe</div>
+        </div>
+    </section>
+
+</body>
+</html>

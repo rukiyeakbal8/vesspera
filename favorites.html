@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VESPERA | Favorilerim</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #050505; color: #e0e0e0; font-family: 'Montserrat', sans-serif; }
+        h1, h2, h3, h4, .serif-font { font-family: 'Playfair Display', serif; font-weight: normal; }
+        a { text-decoration: none; transition: 0.3s ease; }
+
+        /* Üst Menü */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background-color: #000000; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .logo { font-size: 28px; letter-spacing: 4px; color: #ffffff; font-family: 'Playfair Display', serif; }
+        nav ul { list-style: none; display: flex; gap: 30px; }
+        nav ul li a { color: #888888; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+        nav ul li a:hover, nav ul li a.active { color: #ffffff; }
+
+        .page-title { text-align: center; margin: 80px 0 60px; }
+        .page-title h1 { font-size: 42px; letter-spacing: 5px; color: #fff; margin-bottom: 15px; }
+
+        /* Favoriler Izgarası */
+        .favorites-container { max-width: 1200px; margin: 0 auto 100px; padding: 0 20px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+        
+        .product-card { background-color: #0a0a0a; border: 1px solid #1a1a1a; padding: 15px; position: relative; text-align: center; transition: 0.3s; }
+        .product-card:hover { border-color: #333; transform: translateY(-5px); }
+        .product-img { width: 100%; height: 250px; object-fit: cover; filter: brightness(0.85) contrast(1.1); margin-bottom: 15px; }
+        
+        .product-info h4 { font-size: 18px; color: #fff; margin-bottom: 5px; }
+        .product-info p { font-size: 13px; color: #888; margin-bottom: 15px; }
+        
+        /* Sepete Taşı Butonu */
+        .btn-move { display: block; width: 100%; padding: 12px 0; background-color: #111; border: 1px solid #333; color: #fff; font-size: 10px; font-family: 'Montserrat', sans-serif; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
+        .btn-move:hover { background-color: #fff; color: #000; border-color: #fff; }
+
+        /* Aktif Kalp İkonu */
+        .heart-icon { position: absolute; top: 25px; right: 25px; font-size: 20px; color: #d4af37; cursor: pointer; z-index: 2; text-shadow: 0 0 10px rgba(0,0,0,0.5); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav style="flex: 1;">
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="shop.html">Koleksiyon</a></li>
+                <li><a href="celebrities.html">Yıldızların Seçimi</a></li>
+                <li><a href="reviews.html">Yorumlar</a></li>
+            </ul>
+        </nav>
+        <a href="index.html" class="logo">VESPERA</a>
+        <div style="flex: 1; display: flex; justify-content: flex-end; gap: 20px; color: #fff; font-size: 11px; letter-spacing: 1px;">
+            <a href="login.html" style="color:#fff;">GİRİŞ YAP</a> |
+            <a href="favorites.html" style="color:#fff; border-bottom: 1px solid #fff; padding-bottom: 3px;">FAVORİLER</a> | 
+            <a href="cart.html" style="color:#fff;">SEPET (0)</a>
+        </div>
+    </header>
+
+    <div class="page-title">
+        <h1 class="serif-font">Seçtiğiniz Parçalar</h1>
+    </div>
+
+    <section class="favorites-container">
+        <!-- Favori Ürün 1 -->
+        <div class="product-card">
+            <div class="heart-icon">♥</div>
+            <img src="yuzukgoz.jpg" alt="Gözyaşı Pırlanta Yüzük" class="product-img">
+            <div class="product-info">
+                <h4 class="serif-font">Gözyaşı Pırlanta Yüzük</h4>
+                <p>$1,250.00</p>
+                <button class="btn-move">Sepete Taşı</button>
+            </div>
+        </div>
+
+        <!-- Favori Ürün 2 -->
+        <div class="product-card">
+            <div class="heart-icon">♥</div>
+            <img src="zumrutyuzuk.jpg" alt="Zümrüt Kesim Yüzük" class="product-img">
+            <div class="product-info">
+                <h4 class="serif-font">Zümrüt Kesim Yüzük</h4>
+                <p>$980.00</p>
+                <button class="btn-move">Sepete Taşı</button>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
